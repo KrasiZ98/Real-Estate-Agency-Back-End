@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <title>{{title}}</title>
+</head>
+
+<body>
+    <nav>
+        <a href="/">Home</a>
+        <ul>
+            <!-- Guest users and Logged users -->
+            <li><a href="/catalog">Housing for rent</a></li>
+            <!-- Guest users -->
+            {{#if user}}
+            <li><a href="/action/create">Create offer</a></li>
+            <li><a href="/auth/logout">Logout</a></li>
+            <li><a href="/search">Search</a></li>
+            <!-- Logged users -->
+            {{else}}
+            <li><a href="/auth/login">Login</a></li>
+            <li><a href="/auth/register">Register</a></li>
+            {{/if}}
+        </ul>
+    </nav>
+
+    {{#if errors}}
+    <div>
+        <div class="errorContainer">
+            {{#each errors}}
+            <p>{{this}}</p>
+            {{/each}}
+        </div>
+    </div>
+    {{/if}}
+
+    {{{body}}}
+
+    <footer>
+        © 2021
+
+    </footer>
+</body>
+
+</html>

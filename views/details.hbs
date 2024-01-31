@@ -1,0 +1,65 @@
+<main>
+    {{#with post}}
+    <section id="deatils-page">
+        <div class="wrapper">
+            <div class="product-img">
+                <img src="{{homeImage}}">
+            </div>
+            <div class="product-info">
+                <div class="product-text">
+                    <div class="product-text">
+                        <h1>Name: {{name}}</h1>
+                        <h2>Type: {{type}}</h2>
+                        <h4>Year: {{year}}</h4>
+                        <h4>City: {{city}}</h4>
+                        <p>Description: {{description}}</p>
+                        <p>Available pieces: {{leftPieces}}</p>
+
+                        <!-- if there are already tenants of the housing, separate their names with a comma and a space ", "  -->]
+
+                        {{#if users}}
+                        <p>People rented this housing: {{users}}</p>
+
+                        <!-- If not display: -->
+                        {{else}}
+                        <p>There are no tenants yet.</p>
+                        {{/if}}
+
+                    </div>
+                </div>
+
+                <!-- if there is no registered user, do not display buttons-->
+                <div class="product-btn">
+
+                    <!-- Only for registered user and creator of the housing offer-->
+                    {{#if isOwner}}
+                    <a href="/action/{{_id}}/edit" class="edit">Edit</a>
+                    <a href="/action/{{_id}}/delete" class="remove">Delete</a>
+
+                    <!-- logged in user with available pieces-->
+                    {{else}}
+
+
+                   {{#if isRented}}
+                    <p class="alRentHome">You have already rent this home</p>
+                
+                    {{else}}
+                  {{#if noPieces}}
+                    <p class="no-housing">No Housing Available!</p>
+                    {{else}}
+                    <a href="/action/{{_id}}/rent" class="rentHome">Rent a home, available {{leftPieces}} housing</a>
+                    {{/if}}
+                    {{/if}}
+                    {{/if}}
+              
+
+
+                    <!-- logged in user with no available pieces-->
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    {{/with}}
+</main>

@@ -1,0 +1,42 @@
+<main>
+    {{#with post}}
+    <section id="deatils-page">
+        <div class="wrapper">
+            <div class="product-img">
+                <img src="{{homeImage}}">
+            </div>
+            <div class="product-info">
+                <div class="product-text">
+                    <div class="product-text">
+                        <h1>Name: {{name}}</h1>
+                        <h2>Type: {{type}}</h2>
+                        <h4>Year: {{year}}</h4>
+                        <h4>City: {{city}}</h4>
+                        <p>Description: {{description}}</p>
+                        <p>Available pieaces: {{leftPieces}}</p>
+
+                        <!-- if there are already tenants of the housing, separate their names with a comma and a space ", "  -->
+                             {{#if users}}
+                      
+                        <p>People rented this housing: {{users}}v</p>
+                 
+                        <!-- If not display: -->
+                        {{else}}
+                        <p>People rented this housing: There are no tenants yet.</p>
+                        {{/if}}
+                    </div>
+                </div>
+
+                <!-- if there is no registered user, do not display buttons-->
+                <div class="product-btn">
+                    
+                    <p class="no-housing">No Housing Available!</p>
+                    
+                  
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    {{/with}}
+</main>
